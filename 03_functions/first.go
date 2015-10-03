@@ -7,3 +7,7 @@ import "fmt"
 func main() {
     print("Hello World")
 }
+
+func print(message string){
+    fmt.Println(message)
+}

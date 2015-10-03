@@ -18,6 +18,11 @@ func (c *Computer) Describe() {
 // TODO: Make a StartTimer function that...
 //  - Sleeps for a given duration
 //  - Prints a message when done
+func (c *Computer) StartTimer(duration time.Duration){
+    time.Sleep(duration)
+    fmt.Println("Sleep Complete")
+}
+
 
 func main() {
     computer := Computer{

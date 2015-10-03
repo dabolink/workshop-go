@@ -44,6 +44,8 @@ func main() {
     fmt.Printf("How long? ")
     
     // TODO: Get the number of seconds from user input
+    var seconds int
+    fmt.Scan(&seconds)
     
     t := time.Duration(seconds) * time.Second
     go computer.StartInterval(channel, t)

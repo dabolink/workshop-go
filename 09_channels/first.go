@@ -18,7 +18,7 @@ func (c *Computer) Describe() {
 func (c *Computer) StartTimer(channel chan string, t time.Duration) {
     fmt.Println("Starting timer...")
     time.Sleep(t)
-    
+    channel <- "Time Up!"
     // TODO: Push the "Time up!" string to the channel
 }
 
@@ -28,12 +28,15 @@ func main() {
         Model: "Macbook",
         Price: 1000,
     }
-    
-    channel := make(chan bool)
+    channel := make(chan string)
     
     t := 3 * time.Second
     go computer.StartTimer(channel, t)
-    
+    select {
+        case s := <- channel:
+            fmt.Println(s)
+        
+    }
     // Use "select" to listen to the channel and print the string
     
     fmt.Println("Exited")

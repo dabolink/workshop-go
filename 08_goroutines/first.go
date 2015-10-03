@@ -31,7 +31,7 @@ func main() {
     t := 3 * time.Second
     
     // TODO: Spawn this function in a goroutine
-    computer.StartTimer(t)
+    go computer.StartTimer(t)
     
     // IGNORE THIS:
     // This is a hack, so the program doesn't quit before the goroutine finishes

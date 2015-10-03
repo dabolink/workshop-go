@@ -27,8 +27,8 @@ func main() {
         Model: "Macbook",
         Price: 1000,
     }
-    
-    channel := make(chan bool)
+    //bool -> string
+    channel := make(chan string)
     
     t := 3 * time.Second
     go computer.StartTimer(channel, t)

@@ -23,7 +23,11 @@ func (c *Computer) StartTimer(channel chan string, t time.Duration) {
 
 func (c *Computer) StartInterval(channel chan string, t time.Duration) {
     fmt.Println("Starting interval...")
-
+    for i := 0*time.Second; i < t; i = i + time.Second{
+        time.Sleep(1*time.Second)
+        fmt.Println("Interval ", i, "ended")
+    }
+    close(channel)
     // TODO: Use a "for" loop to push a message to the channel every t seconds
 
     // TODO: Close the channel after the loop finishes
@@ -38,12 +42,13 @@ func main() {
     
     channel := make(chan string)
     
-    t := 1 * time.Second
+    t := 10 * time.Second
     go computer.StartInterval(channel, t)
 
     computer.Describe()
-    
     // TODO: Use a "for" loop to watch for messages on the channel
-    
+    for message := range channel{
+        fmt.Println(message)
+    }
     fmt.Println("Exited")
 }
